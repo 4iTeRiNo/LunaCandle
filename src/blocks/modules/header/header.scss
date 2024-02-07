@@ -1,0 +1,192 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(12px, 2vw, 16px);
+  text-transform: uppercase;
+  container-type: inline-size;
+
+  &__navLinks {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__linkItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    column-gap: 1.25rem;
+  }
+
+  &__linkItem {
+    text-wrap: nowrap;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 0.3s;
+  }
+
+  &__linkItem:hover {
+    background-size: 100% 2px;
+  }
+
+  &__numberCall {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 2.5%;
+  }
+
+  &__numberCall-number {
+    text-wrap: nowrap;
+  }
+
+  &__numberCall-number:hover {
+    transform: scale(1.02);
+  }
+
+  &__numberCall-img:after {
+    position: relative;
+    content: "";
+    display: flex;
+    width: 24px;
+    height: 24px;
+    background: url("../../../img/sprites/ic_sharp-phone.svg") no-repeat;
+    background-size: cover;
+  }
+
+  &__hamburgerWrapper {
+    display: none;
+  }
+
+  &__burger {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    background: $color-brown;
+    width: 40px;
+    height: 4px;
+    border-radius: 10px;
+    margin: 30px auto;
+  }
+
+  &__burger::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    top: 10px;
+    background: $color-brown;
+  }
+
+  &__burger::before {
+    top: -10px;
+    background: $color-brown;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+  }
+
+  .active + &__burger::before {
+    top: 11px;
+    transform: rotate(45deg);
+    box-shadow: 0 6px 0 rgb(250, 250, 250, 0);
+    background: $color-white;
+    transition: box-shadow 0.15s, top 0.3s, transform 0.3s 0.15s;
+  }
+  .active + &__burger::after {
+    bottom: 11px;
+    background: $color-white;
+    transform: rotate(-45deg);
+    transition: bottom 0.3s, transform 0.3s 0.15s;
+  }
+}
+
+@container (max-width: 800px) {
+  .header__linkItems {
+    display: none;
+  }
+
+  .header__linkItem {
+    cursor: pointer;
+    color: $color-lightPik;
+  }
+
+  .header__hamburgerWrapper {
+    display: block;
+    z-index: 999;
+  }
+
+  .header__hamburgerLinks {
+    position: absolute;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-inline: auto;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    top: 0;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    transition: all 0.6s ease-in-out;
+    width: 300%;
+    min-height: 100vh;
+  }
+}
+
+.showMenu {
+  min-height: 100vh;
+  background-color: $color-brown;
+  opacity: 1;
+  -webkit-transform: translateX(45px);
+  transform: translateX(45px);
+  transition: all 0.9s ease-out;
+  width: 320px;
+  z-index: -1;
+}
+
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: $color-brown;
+  stroke-width: 5.5;
+  stroke-linecap: round;
+}
+.ham.active .line {
+  stroke: $color-white;
+}
+.ham .top {
+  stroke-dasharray: 40 121;
+}
+.ham .bottom {
+  stroke-dasharray: 40 121;
+}
+.ham.active .top {
+  stroke-dashoffset: -68px;
+}
+.ham.active .bottom {
+  stroke-dashoffset: -68px;
+}

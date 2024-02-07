@@ -13,8 +13,10 @@
     "sourceType": "module"
   },
 
+  "plugins": {"@stylistic/js": "stylisticJs"},
+
   "rules": {
-    "@stylistic/js/indent": ["error", 2],
+    "@stylistic/js/indent": ["error", 3],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"]
