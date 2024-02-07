@@ -1,0 +1,49 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  padding: 0 1rem;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  background-color: $color-lightPik;
+  font-size: 16px;
+  margin: 0 auto;
+  container-type: inline-size;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  @include container(1162px);
+}
+
+@container (max-width: 1000px) {
+  .wrapper {
+    @include container(960px);
+  }
+}
+
+@container (max-width: 768px) {
+  .wrapper {
+    @include container(700px);
+  }
+}
+
+@container (max-width: 480px) {
+  .wrapper {
+    @include container(460px);
+  }
+}
+
+@container (max-width: 360px) {
+  .wrapper {
+    @include container(340px);
+  }
+}
